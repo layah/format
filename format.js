@@ -4,9 +4,9 @@
         };
         return global.format;
        })(window,function(date,fmt){
-       	'use strict';
+        'use strict';
         function DateFomat(){
-                this.date=(!date?new Date():date);
+                this.date=(!date?new Date():(typeof date==='number'?new Date(date):date));
                 this.default=fmt || "yyyy MM dd HH:mm:ss w";
                 var pad=function(val){
                     var len=2;
@@ -50,7 +50,7 @@
                 }
             };
             DateFomat.prototype.format=function(fmtDate){
-            	console.time()
+                console.time()
                 var parse=/yy(?:yy)|d{2}|MM|HH|[aA]|w+|[yMdHmsw]+|"[^"]*"|'[^']*'/g;
                 var _this=this;
                 
